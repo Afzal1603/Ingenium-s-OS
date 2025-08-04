@@ -1,12 +1,9 @@
-# React + Vite
+# 🖥️ Ingenium's OS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Ingenium's OS** is a browser-based simulation of a simple, graphical user interface (GUI) operating system. It is designed to mimic the look and feel of a basic OS environment without being a full-fledged operating system. This project is a front-end simulation and runs entirely in the browser.
 
-Currently, two official plugins are available:
+> ⚠️ Note: This is not a real operating system. It is a **simulation** for educational and demonstrative purposes only.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Currently under development
