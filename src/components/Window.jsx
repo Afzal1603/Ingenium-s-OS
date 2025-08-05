@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import Icons from "./Icons";
-
+import { Laptop, Camera } from "lucide-react";
 const Window = () => {
   const [showContextMenu, setShowContextMenu] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -32,7 +32,7 @@ const Window = () => {
 
   return (
     <div
-      className="w-screen h-screen bg-gray-100 relative overflow-hidden"
+      className="overflow-hidden w-screen h-screen bg-gray-100 relative "
       onContextMenu={handleContextMenu}
     >
       <div>
@@ -42,13 +42,14 @@ const Window = () => {
           alt=""
         />
       </div>
-      <Icons />
+      <Icons figcaption="Camera" top="top-20" Icon={Camera} />
+      <Icons figcaption="This PC" top="top-0" Icon={Laptop} />
 
       {/* Context Menu */}
       {showContextMenu && (
         <div
           ref={menuRef}
-          className="absolute bg-white shadow-lg rounded-md border p-2 z-50"
+          className="absolute bg-white  shadow-lg rounded-md border p-2 z-50"
           style={{ top: position.y, left: position.x }}
         >
           <p

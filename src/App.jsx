@@ -4,6 +4,9 @@ import Window2 from "./components/Window2";
 import { useSelector } from "react-redux";
 import Navbar from "./components/Navbar";
 
+import Camera from "./components/Camera";
+import ThisPC from "./components/ThisPC";
+
 const App = () => {
   const windowOpen = useSelector((state) => state.window);
 
@@ -11,7 +14,9 @@ const App = () => {
     <div className="overflow-hidden w-screen h-screen">
       <Navbar></Navbar>
       <Window></Window>
-      {windowOpen.val && windowOpen.count == 2 && <Window2></Window2>}
+      {/* <Camera></Camera> */}
+
+      {windowOpen.val && windowOpen.count == 2 && <Camera></Camera>}
     </div>
   );
 };

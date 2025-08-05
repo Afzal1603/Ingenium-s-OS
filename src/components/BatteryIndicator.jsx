@@ -1,5 +1,6 @@
 "use client";
 
+import { div, span } from "framer-motion/client";
 import {
   BatteryCharging,
   BatteryMedium,
@@ -47,9 +48,25 @@ const BatteryIndicator = () => {
 
   const { level, charging } = batteryInfo;
 
-  if (charging) return <BatteryCharging color="white" />;
-  if (level >= 0.75) return <BatteryFull color="white" />;
-  if (level >= 0.2) return <BatteryMedium color="white" />;
+  if (charging)
+    return (
+      <span title="Charging">
+        <BatteryCharging color="white" />
+      </span>
+    );
+  if (level >= 0.75)
+    return (
+      <span title={`${(level * 100).toFixed(0)}%`}>
+        <BatteryFull color="white" />
+      </span>
+    );
+  if (level >= 0.2)
+    return (
+      <span title={`${(level * 100).toFixed(0)}%`}>
+        {" "}
+        <BatteryMedium color="white" />
+      </span>
+    );
   return <BatteryLow color="white" />;
 };
 
