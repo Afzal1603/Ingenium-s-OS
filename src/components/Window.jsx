@@ -1,7 +1,16 @@
 import { useState, useRef, useEffect } from "react";
 import Icons from "./Icons";
 import { Laptop, Camera } from "lucide-react";
+import { cameraToggle } from "../redux/slice/windowSlice";
+import {
+  browserToggle,
+  galleryToggle,
+  pcToggle,
+  settingToggle,
+} from "../redux/slice/pcSlice";
+import { useSelector } from "react-redux";
 const Window = () => {
+  const wall = useSelector((state) => state.wall);
   const [showContextMenu, setShowContextMenu] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const menuRef = useRef(null);
@@ -36,14 +45,38 @@ const Window = () => {
       onContextMenu={handleContextMenu}
     >
       <div>
-        <img
-          className="w-screen h-screen object-cover"
-          src="wallpaper/wall-1.jpg"
-          alt=""
-        />
+        <img className="w-screen h-screen object-cover" src={wall} alt="" />
       </div>
-      <Icons figcaption="Camera" top="top-20" Icon={Camera} />
-      <Icons figcaption="This PC" top="top-0" Icon={Laptop} />
+      <Icons
+        figcaption="This PC"
+        top="top-0"
+        Icon="/icons/this-pc.png"
+        toggle={pcToggle}
+      />
+      <Icons
+        figcaption="Camera"
+        top="top-20"
+        Icon="/icons/camera.png"
+        toggle={cameraToggle}
+      />
+      <Icons
+        figcaption="Settings"
+        top="top-40"
+        Icon="/icons/setting.png"
+        toggle={settingToggle}
+      />
+      <Icons
+        figcaption="Gallery"
+        top="top-60"
+        Icon="/icons/folder.png"
+        toggle={galleryToggle}
+      />
+      <Icons
+        figcaption="Chrome"
+        top="top-80"
+        Icon="/icons/chrome.png"
+        toggle={browserToggle}
+      />
 
       {/* Context Menu */}
       {showContextMenu && (

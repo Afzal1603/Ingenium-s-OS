@@ -1,10 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleWindow } from "../redux/slice/windowSlice";
-import { Cross, Crosshair, Minimize, X } from "lucide-react";
+import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
-const Window2 = ({ children }) => {
-  const windowOpen = useSelector((state) => state.window);
+import { X, Minimize } from "lucide-react";
+const Window2 = ({ children, toggle, state, name }) => {
   const [componentSize, setComponentSize] = useState({
     width: 400,
     height: 400,
@@ -41,6 +39,12 @@ const Window2 = ({ children }) => {
 
   return (
     <motion.div
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{
+        opacity: 1,
+        scale: 1,
+        transition: { duration: 0.1 },
+      }}
       drag={minimize}
       dragConstraints={{
         left: constraintPadding,
@@ -50,15 +54,15 @@ const Window2 = ({ children }) => {
       }}
       ref={windowRef}
       dragMomentum={false}
-      className={`absolute ${
+      className={`absolute rounded-t-md ${
         minimize
           ? "top-1/4 left-1/4 w-[400px] h-[400px]"
           : "top-0 left-0 w-full h-full"
       } bg-black overflow-hidden`}
     >
-      <div className=" bg-slate-800 w-full h-8 flex">
+      <div className=" bg-slate-800 rounded-t-md w-full h-8 flex mb-2 sticky">
         <button
-          onClick={() => dispatch(toggleWindow(windowOpen))}
+          onClick={() => dispatch(toggle(state))}
           className={`top-2 right-2 text-white hover:bg-slate-700  w-8 h-8 flex justify-center items-center`}
         >
           <X size={20} />
@@ -69,8 +73,11 @@ const Window2 = ({ children }) => {
         >
           <Minimize size={20} />
         </button>
+        <h1 className="text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-lg font-semibold border-zinc-500 border-b-3">
+          {name}
+        </h1>
       </div>
-      <div>{children}</div>
+      <div className="overflow-hidden w-screen h-full">{children}</div>
     </motion.div>
   );
 };

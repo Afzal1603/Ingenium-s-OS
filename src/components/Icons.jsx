@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleWindow } from "../redux/slice/windowSlice";
-const Icons = ({ figcaption, Icon, top }) => {
+
+const Icons = ({ figcaption, Icon, top, toggle }) => {
   const windowOpen = useSelector((state) => state.window);
   const [constraints, setConstraints] = useState({
     left: 0,
@@ -37,15 +37,15 @@ const Icons = ({ figcaption, Icon, top }) => {
   return (
     <motion.figure
       drag
-      onClick={() => {
-        dispatch(toggleWindow(windowOpen));
+      onDoubleClick={() => {
+        dispatch(toggle(windowOpen));
       }}
       dragConstraints={constraints}
       dragMomentum={false}
       dragElastic={0}
-      className={`absolute ${top} left-0 w-16 h-24 flex flex-col justify-center items-center cursor-pointer`}
+      className={`mt-.5 absolute ${top} left-0 w-16 h-22 flex flex-col hover:text-white transition-all justify-center items-center cursor-pointer hover:bg-red-50/5 rounded-md `}
     >
-      {<Icon size={60} strokeWidth="1" />}
+      {<img src={Icon} size={60} strokeWidth="1" />}
       <figcaption className="font-medium text-[10px] text-center ">
         {figcaption}
       </figcaption>
